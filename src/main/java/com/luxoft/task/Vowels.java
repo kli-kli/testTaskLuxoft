@@ -24,6 +24,6 @@ public enum Vowels {
     }
 
     static boolean isItVowel(int ch) {
-        return Arrays.stream(Vowels.values()).anyMatch(p -> p.ch == ch);
+        return isItVowel((int)ch);
     }
 }
