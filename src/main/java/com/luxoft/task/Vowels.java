@@ -19,11 +19,7 @@ public enum Vowels {
         return ch;
     }
 
-    static boolean isItVowel(char ch) {
-        return Arrays.stream(Vowels.values()).anyMatch(p -> p.ch == ch);
-    }
-
     static boolean isItVowel(int ch) {
-        return isItVowel((int)ch);
+        return Arrays.stream(Vowels.values()).anyMatch(p -> p.ch == ch);
     }
 }

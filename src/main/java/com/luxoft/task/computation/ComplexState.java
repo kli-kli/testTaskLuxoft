@@ -1,4 +1,4 @@
-package com.luxoft.task;
+package com.luxoft.task.computation;
 
 /**
  *
@@ -21,6 +21,6 @@ public class ComplexState {
   }
 
   public Double getAverage() {
-    return Double.valueOf(counterWords)/counterVowels;
+    return Double.valueOf(counterVowels)/counterWords;
   }
 }

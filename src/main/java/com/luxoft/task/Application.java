@@ -1,5 +1,7 @@
 package com.luxoft.task;
 
+import com.luxoft.task.computation.Computation;
+
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -10,7 +12,7 @@ import java.nio.file.Paths;
  */
 public class Application {
 
-    private static Path path = Paths.get("/tmp");
+    private static Path path = Paths.get("/tmp/INPUT.txt");
 
     public static void main(String ...args) {
       byte[] data = LoadData.getData(path);

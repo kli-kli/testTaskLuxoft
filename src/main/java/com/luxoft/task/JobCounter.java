@@ -1,16 +1,10 @@
 package com.luxoft.task;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Arrays;
+import com.luxoft.task.computation.ComplexKey;
+import com.luxoft.task.computation.ComplexState;
+
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -23,15 +17,19 @@ public class JobCounter {
   private Map<ComplexKey, ComplexState> map = new HashMap<>();
 
   public void count(String word) {
-    int[] charsInt = word.toUpperCase().chars().filter(p -> Vowels.isItVowel(p)).toArray();
+    int[] charsInt = word.toUpperCase().chars().filter(p -> Vowels.isItVowel((char)p)).toArray();
+    int length = charsInt.length;
     char[] chars = IntStream.of(charsInt).mapToObj(c -> Character.toString((char) c))
+        .distinct()
+        .sorted()
         .collect(Collectors.joining()).toCharArray();
+
     ComplexKey key = new ComplexKey(chars, word.length());
     if (map.containsKey(key)) {
       ComplexState state = map.get(key);
-      state.addNewWord(chars.length);
+      state.addNewWord(length);
     } else {
-      map.put(key, new ComplexState(1, chars.length));
+      map.put(key, new ComplexState(1, length));
     }
   }
 
